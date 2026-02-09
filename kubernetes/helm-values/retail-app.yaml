@@ -1,0 +1,14 @@
+# kubernetes/helm-values/retail-app.yaml
+global:
+  namespace: retail-app
+  
+catalog:
+  replicaCount: 2
+  
+cart:
+  replicaCount: 2
+  
+ui:
+  replicaCount: 2
+  service:
+    type: ClusterIP

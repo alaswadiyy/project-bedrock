@@ -1,0 +1,10 @@
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.log
+*.pem
+*.key
+.grading.json
+.aws/
+.env
+.DS_Store
