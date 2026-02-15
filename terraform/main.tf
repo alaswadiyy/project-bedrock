@@ -1,42 +1,3 @@
-terraform {
-  required_version = ">= 1.0"
-  
-  backend "s3" {
-    bucket         = "project-bedrock-tfstate-alt-soe-025-1329"
-    key            = "terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "project-bedrock-tfstate-lock"
-    encrypt        = true
-  }
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "~> 2.23"
-    }
-    helm = {
-      source  = "hashicorp/helm"
-      version = "~> 2.12"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-east-1"
-  
-  default_tags {
-    tags = {
-      Project     = "barakat-2025-capstone"
-      Environment = "production"
-      ManagedBy   = "terraform"
-    }
-  }
-}
-
 # Module calls
 module "vpc" {
   source = "./modules/vpc"
@@ -51,4 +12,9 @@ module "eks" {
 module "iam" {
   source = "./modules/iam"
   cluster_name = module.eks.cluster_name
+}
+
+module "s3_lambda" {
+  source = "./modules/s3-lambda"
+  student_id = var.student_id
 }
