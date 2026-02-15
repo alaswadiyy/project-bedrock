@@ -1,0 +1,65 @@
+﻿{
+  "assets_bucket_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "bedrock-assets-alt-soe-025-1181"
+  },
+  "catalog_rds_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "project-bedrock-catalog-mysql.cut066oo6nbq.us-east-1.rds.amazonaws.com"
+  },
+  "cluster_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "https://53D890BD3BDA8EEF17E5E1282048DC01.gr7.us-east-1.eks.amazonaws.com"
+  },
+  "cluster_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "project-bedrock-cluster"
+  },
+  "orders_rds_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "project-bedrock-orders-postgres.cut066oo6nbq.us-east-1.rds.amazonaws.com"
+  },
+  "private_subnet_ids": {
+    "sensitive": false,
+    "type": [
+      "tuple",
+      [
+        "string",
+        "string"
+      ]
+    ],
+    "value": [
+      "subnet-0c6d43b9bc7e3df22",
+      "subnet-0f77d1233d0d978c3"
+    ]
+  },
+  "public_subnet_ids": {
+    "sensitive": false,
+    "type": [
+      "tuple",
+      [
+        "string",
+        "string"
+      ]
+    ],
+    "value": [
+      "subnet-0bbdb05e5ee1c4f9b",
+      "subnet-0b20642b0a7082721"
+    ]
+  },
+  "region": {
+    "sensitive": false,
+    "type": "string",
+    "value": "us-east-1"
+  },
+  "vpc_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "vpc-01303c87da1b3ac58"
+  }
+}
