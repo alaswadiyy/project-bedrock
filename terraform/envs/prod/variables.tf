@@ -42,3 +42,9 @@ variable "iam_user_password" {
   type = string
   sensitive = true
 }
+
+variable "student_id" {
+  description = "Student or tenant identifier"
+  type        = string
+  default     = "alt-soe-025-1329"
+}

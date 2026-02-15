@@ -9,7 +9,7 @@ provider "aws" {
 }
 
 locals {
-  student_id        = "alt-soe-025-1181-new"
+  student_id        = "alt-soe-025-1329"
   state_bucket_name = "bedrock-tfstate-${local.student_id}"
   lock_table_name   = "bedrock-tf-locks-${local.student_id}"
 }
