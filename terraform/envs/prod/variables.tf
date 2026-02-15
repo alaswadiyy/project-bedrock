@@ -29,18 +29,21 @@ variable "catalog_db_password" {
   description = "Password for catalog RDS MySQL"
   type        = string
   sensitive   = true
+  default     = ""
 }
 
 variable "orders_db_password" {
   description = "Password for orders RDS PostgreSQL"
   type        = string
   sensitive   = true
+  default     = ""
 }
 
 variable "iam_user_password" {
   description = "iam user console password"
-  type = string
-  sensitive = true
+  type        = string
+  sensitive   = true
+  default     = ""
 }
 
 variable "student_id" {
