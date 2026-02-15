@@ -1,12 +1,3 @@
-# S3 bucket for assets
-resource "aws_s3_bucket" "assets" {
-  bucket = "bedrock-assets-${var.student_id}"
-  
-  tags = {
-    Project = "barakat-2025-capstone"
-  }
-}
-
 # IAM role for Lambda execution
 resource "aws_iam_role" "lambda_exec" {
   name = "bedrock-asset-processor-lambda-role"
@@ -33,14 +24,21 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
+# Archive Lambda source code
+data "archive_file" "lambda_processor" {
+  type        = "zip"
+  source_dir  = "${path.module}/../../../lambda/asset-processor"
+  output_path = "${path.module}/../../../lambda/bedrock-asset-processor.zip"
+}
+
 # Lambda function for asset processing
 resource "aws_lambda_function" "processor" {
-  filename      = "lambda/asset-processor.zip"
+  filename      = data.archive_file.lambda_processor.output_path
   function_name = "bedrock-asset-processor"
   role          = aws_iam_role.lambda_exec.arn
   handler       = "index.handler"
   runtime       = "python3.12"
-  source_code_hash = filebase64sha256("${path.module}/../../lambda/asset-processor.zip")
+  source_code_hash = data.archive_file.lambda_processor.output_base64sha256
   
   environment {
     variables = {

@@ -1,9 +1,10 @@
 terraform {
   backend "s3" {
-    bucket         = "bedrock-tfstate-541801281384-025-1181"
-    key            = "project-bedrock/prod/terraform.tfstate"
+    bucket         = "bedrock-assests-alt-soe-025-1329"
+    key            = "terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "bedrock-terraform-locks"
+    #dynamodb_table = "project-bedrock-tfstate-lock"
+    use_lockfile = true
     encrypt        = true
   }
 }

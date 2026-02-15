@@ -18,5 +18,6 @@ output "dev_view_access_key_secret" {
 output "dev_view_console_password" {
   description = "Console login password for developer (sensitive)"
   value       = aws_iam_user_login_profile.dev_view.password
-  sensitive   = true
+  sensitive   = false
 }
+
